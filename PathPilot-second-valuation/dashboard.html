@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PathPilot — Student Career OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/app.css?v=3">
+<link rel="stylesheet" href="css/modern-ui.css?v=1">
+</head>
+<body><script>if(localStorage.getItem("pathpilot-theme")==="dark")document.body.classList.add("dark");</script>
+  <div id="brand-splash" class="brand-splash" aria-hidden="true">
+  <div class="brand-splash-content">
+    <div class="splash-logo"><span>P</span></div>
+    <div class="splash-brand">
+      <span class="splash-brand-name">PathPilot</span>
+      <span class="splash-tagline">Your path. Your future.</span>
+    </div>
+    <div class="splash-line"><span></span></div>
+  </div>
+</div>
+<div id="authRoot"></div>
+<div class="layout hidden" id="appRoot">
+  <aside class="sidebar ppsb">
+    <div class="brand ppsb-brand-simple">
+      <div class="brand-mark ppsb-brand-mark-simple">P</div>
+      <div class="brand-text">
+          <span class="pp-brand-wordmark"><span class="pp-word-path">Path</span><span class="pp-word-pilot">Pilot</span></span>
+          <small>Student Career OS</small>
+        </div>
+    </div>
+
+    <div class="nav ppsb-nav">
+      <div class="nav-group ppsb-group">OVERVIEW</div>
+      <button class="active" data-page="dashboard"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/></svg></span><span>Dashboard</span></span><span class="nav-badge" id="navTaskCount">0</span></button>
+      <button data-page="analytics"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 15l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Analytics</span></span></button>
+
+      <div class="nav-group ppsb-group">ACADEMIC</div>
+      <button data-page="timetable"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4.5" width="18" height="16" rx="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Timetable</span></span></button>
+      <button data-page="calendar"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Calendar</span></span></button>
+      <button data-page="grades"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4L2 8.5 12 13l10-4.5L12 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Grades Tracker</span></span></button>
+      <button data-page="habits"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Habit Tracker</span></span></button>
+
+      <div class="nav-group ppsb-group">STUDY &amp; PREP</div>
+      <button data-page="dsa"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M8 6L2.5 12 8 18M16 6l5.5 6-5.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>DSA Prep</span></span><span class="nav-badge">75</span></button>
+      <button data-page="dsaProgress"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9M10 19V5M16 19v-8M22 19H2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>DSA Progress</span></span></button>
+      <button data-page="flashcards"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="14" height="14" rx="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M7 9h6M7 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Flashcards</span></span></button>
+      <button data-page="exams"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 9v4l2.5 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 4h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Exams</span></span></button>
+
+      <div class="nav-group ppsb-group">CAREER</div>
+      <button data-page="internships"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M8 7V5.8A1.8 1.8 0 0 1 9.8 4h4.4A1.8 1.8 0 0 1 16 5.8V7M3 12h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Internships</span></span><span class="nav-badge" id="navInternCount">0</span></button>
+      <button data-page="resume"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Resume &amp; ATS</span></span><span class="nav-badge" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff">ATS</span></button>
+      <button data-page="interviews"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 9h8M8 13h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Mock Interview</span></span><span class="nav-badge" style="background:rgba(16,185,129,0.18);color:#10b981">NEW</span></button>
+      <button data-page="goals"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span><span>Goals</span></span></button>
+      <button data-page="ai"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15zM5 14l.7 1.8L7.5 16.5 5.7 17.2 5 19l-.7-1.8L2.5 16.5l1.8-.7L5 14z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span><span>AI Coach</span></span></button>
+
+      <div class="nav-group ppsb-group">TOOLS</div>
+      <button data-page="tasks"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Study Planner</span></span></button>
+      <button data-page="notes"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5h9l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12h7M8.5 15.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Notes</span></span></button>
+      <button data-page="focus"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 9v4l2.4 1.6M9.5 2.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Pomodoro</span></span><span class="nav-badge">FOCUS</span></button>
+      <button data-page="portfolio"><span class="nav-left"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Public Portfolio</span></span><span class="nav-badge" style="background:rgba(245,158,11,0.18);color:#f59e0b">LIVE</span></button>
+    </div>
+
+    <div class="ppsb-footer">
+  <button class="ppsb-profile-card" id="sidebarProfileBtn" type="button" aria-label="Open profile">
+    <span class="ppsb-user-avatar" id="sidebarAvatarInitial">G</span>
+    <span class="ppsb-user-copy">
+      <strong id="sidebarProfileName">Guest</strong>
+      <small id="sidebarProfileEmail">guest@pathpilot.local</small>
+    </span>
+  </button>
+  <button class="ppsb-logout-btn" id="sidebarLogoutBtn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>Log out</span>
+  </button>
+</div>
+</aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-actions-global">
+        <button class="global-top-icon mobile-nav-toggle" id="mobileNavBtn" type="button" aria-label="Open navigation" title="Menu">
+          <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <button class="global-top-icon" id="globalCommandBtn" type="button" aria-label="Search PathPilot" title="Command palette (Ctrl K)">
+          <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16.2 16.2L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <button class="global-top-icon" id="globalShortcutsBtn" type="button" aria-label="Keyboard Shortcuts" title="Keyboard Shortcuts (?)">
+          <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <button class="global-top-icon" id="globalThemeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="global-moon" viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M20 15.2A8.2 8.2 0 0 1 8.8 4C7.1 5.3 6 7.4 6 9.8A8.2 8.2 0 0 0 14.2 18c2.4 0 4.5-1.1 5.8-2.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="global-sun" viewBox="0 0 24 24" fill="none" width="17" height="17"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <button class="global-top-icon pp-notify-btn" id="globalNotifyBtn" type="button" aria-label="Activity" title="Activity">
+          <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 21h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="pp-notify-dot" id="ppNotifyDot"></span>
+        </button>
+        <button class="global-top-icon" id="globalProfileBtn" type="button" aria-label="Profile" title="Profile">
+          <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><circle cx="12" cy="8.5" r="3.3" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 19c1.3-3 3.6-4.5 6.5-4.5s5.2 1.5 6.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <button class="global-logout" id="globalLogoutBtn" type="button">Log out</button>
+      </div>
+    </div>
+
+    <section class="page" id="dashboardPage">
+  <div class="sv2-dashboard">
+
+    <!-- StudyVerse-inspired top greeting -->
+    <section class="sv2-greeting-row">
+  <div class="sv2-greeting-copy">
+    <span class="sv2-kicker">STUDENT PRODUCTIVITY · CAREER PREP</span>
+    <h2 id="sv2Greeting">Good afternoon, Guest! <span class="sv2-wave" aria-hidden="true">👋</span></h2>
+    <p id="sv2GreetingSub">Here's your productivity overview for today.</p>
+  </div>
+  <div class="sv2-greeting-actions">
+    <div class="sv2-utility-actions"><button class="theme-toggle-circle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="theme-icon theme-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 15.2A8.2 8.2 0 0 1 8.8 4C7.1 5.3 6 7.4 6 9.8A8.2 8.2 0 0 0 14.2 18c2.4 0 4.5-1.1 5.8-2.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="theme-icon theme-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+        <button class="profile-icon-top" id="profileTopBtn" type="button" aria-label="Profile" title="Profile">
+      <svg viewBox="0 0 24 24" fill="none" width="17" height="17" aria-hidden="true"><circle cx="12" cy="8.5" r="3.3" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 19c1.3-3 3.6-4.5 6.5-4.5s5.2 1.5 6.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+        <button class="btn danger" id="logoutBtn" type="button">Logout</button></div>
+    <button class="btn primary sv2-focus-top" id="svStartFocus" type="button">◷ &nbsp; Start Focus Session</button>
+  </div>
+</section>
+
+    <!-- Quote -->
+    <section class="sv2-quote-card card">
+      <div class="sv2-quote-mark">“</div>
+      <div>
+        <p id="dashQuoteText">"The only way to do great work is to love what you do."</p>
+        <span id="dashQuoteAuthor">— Steve Jobs</span>
+      </div>
+    </section>
+
+    <!-- Today's Insight -->
+    <section class="sv2-insight-card card">
+      <div class="sv2-insight-title">
+        <span class="sv2-insight-symbol">✦</span>
+        <h3>Today's Insight</h3>
+      </div>
+      <div class="sv2-insight-inner">
+        <div class="sv2-insight-icon">▶</div>
+        <div>
+          <strong id="dashInsightTitle">Ready to Focus?</strong>
+          <p id="dashInsightText">Start a Pomodoro session to build your streak.</p>
+        </div>
+        <button class="btn ghost small sv2-insight-action" id="svInsightAction" type="button">Start →</button>
+      </div>
+    </section>
+
+    <section class="pp-briefing-card card" id="ppDailyBriefing">
+      <div class="pp-briefing-head">
+        <div>
+          <span class="pp-kicker">TODAY'S BRIEFING</span>
+          <h3>What deserves attention now</h3>
+        </div>
+        <button class="btn ghost small" id="ppOpenCoachBtn" type="button">Ask coach →</button>
+      </div>
+      <div class="pp-briefing-grid" id="ppBriefingGrid"></div>
+    </section>
+
+    <!-- Today's Overview -->
+    <div class="sv2-section-title">
+      <div class="sv2-title-icon">◎</div>
+      <h3>Today's Overview</h3>
+    </div>
+
+    <section class="sv2-overview-grid">
+      <article class="sv2-overview-card blue">
+        <div class="sv2-card-top">
+          <div>
+            <span>Today's Tasks</span>
+            <strong><span id="ovTasksDone">0</span>/<span id="ovTasksTotal">0</span></strong>
+            <small>completed</small>
+          </div>
+          <div class="sv2-card-icon">✓</div>
+        </div>
+      </article>
+
+      <article class="sv2-overview-card green dsa-overview-card">
+        <div class="sv2-card-top">
+          <div>
+            <span>DSA Solved</span>
+            <strong><span id="ovDsaSolved">0</span>/75</strong>
+            <small>placement practice</small>
+          </div>
+          <div class="sv2-card-icon dsa-code-icon">&lt;/&gt;</div>
+        </div>
+      </article>
+
+      <article class="sv2-overview-card gold">
+        <div class="sv2-card-top">
+          <div>
+            <span>Pomodoros</span>
+            <strong id="ovPomodoros">0</strong>
+            <small>sessions today</small>
+          </div>
+          <div class="sv2-card-icon">♨</div>
+        </div>
+      </article>
+
+      <article class="sv2-overview-card white">
+        <div class="sv2-card-top">
+          <div>
+            <span>Productivity</span>
+            <strong id="ovProductivity">0%</strong>
+            <small>overall score</small>
+          </div>
+          <div class="sv2-card-icon blue-icon">◎</div>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- Premium PathPilot Momentum panel -->
+    <section class="pp-momentum-card" id="ppMomentumCard">
+      <div class="pp-momentum-head">
+        <div>
+          <span class="pp-kicker">PATHPILOT MOMENTUM</span>
+          <h3>Your placement journey at a glance</h3>
+          <p id="ppMomentumSub">Small wins compound into interview readiness.</p>
+        </div>
+        <div class="pp-readiness-ring" id="ppReadinessRing" aria-label="Placement readiness">
+          <div><strong id="ppReadinessScore">0%</strong><span>ready</span></div>
+        </div>
+      </div>
+      <div class="pp-momentum-body">
+        <div class="pp-next-action">
+          <div class="pp-next-icon">✦</div>
+          <div>
+            <span class="pp-next-label">NEXT BEST ACTION</span>
+            <strong id="ppNextActionTitle">Start your first DSA problem</strong>
+            <p id="ppNextActionText">Build momentum with one focused win today.</p>
+          </div>
+          <button class="btn primary" id="ppNextActionBtn" type="button">Start →</button>
+        </div>
+        <div class="pp-momentum-bars">
+          <div class="pp-bar-row"><div><span>DSA</span><strong id="ppDsaBarPct">0%</strong></div><div class="pp-bar"><i id="ppDsaBar"></i></div></div>
+          <div class="pp-bar-row"><div><span>Study execution</span><strong id="ppTaskBarPct">0%</strong></div><div class="pp-bar"><i id="ppTaskBar"></i></div></div>
+          <div class="pp-bar-row"><div><span>Focus consistency</span><strong id="ppFocusBarPct">0%</strong></div><div class="pp-bar"><i id="ppFocusBar"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- StudyVerse-inspired dashboard ending -->
+    <section class="sv-studyverse-end-grid">
+      <article class="sv-sv-card sv-tasks-end-card">
+        <div class="sv-sv-card-head">
+          <h3>Today's Tasks</h3>
+          <button class="sv-sv-link" id="svViewTasks" type="button">View All <span>→</span></button>
+        </div>
+        <div id="todayTaskList" class="sv-today-task-list"></div>
+        <button class="btn primary sv-add-task-end" id="svPlannerBtn" type="button">＋ &nbsp; Add Task</button>
+      </article>
+
+      <article class="sv-sv-card sv-progress-end-card">
+        <div class="sv-sv-card-head">
+          <h3>Today's Progress</h3>
+        </div>
+
+        <div class="sv-progress-row">
+          <div class="sv-progress-label">
+            <span>Task Completion</span>
+            <strong id="tpTaskPct">0%</strong>
+          </div>
+          <div class="sv-progress-track"><span id="tpTaskBar"></span></div>
+        </div>
+
+        <div class="sv-progress-row">
+          <div class="sv-progress-label">
+            <span id="tpStudyLabel">Study Goal (2h)</span>
+            <strong id="tpStudyPct">0%</strong>
+          </div>
+          <div class="sv-progress-track"><span id="tpStudyBar"></span></div>
+        </div>
+
+        <div class="sv-progress-row">
+          <div class="sv-progress-label">
+            <span id="tpPomoLabel">Pomodoro Goal (4)</span>
+            <strong id="tpPomoPct">0%</strong>
+          </div>
+          <div class="sv-progress-track"><span id="tpPomoBar"></span></div>
+        </div>
+
+        <button class="sv-detail-btn" id="svAnalyticsBtn" type="button">View Detailed Analytics <span>→</span></button>
+      </article>
+    </section>
+
+    <section class="sv-sv-card sv-week-progress-card">
+      <div class="sv-sv-card-head">
+        <h3>▣ &nbsp; This Week's Progress</h3>
+      </div>
+
+      <div class="sv-week-progress-item">
+        <div class="sv-week-progress-title">
+          <span class="sv-wp-icon blue">✓</span>
+          <strong>Tasks Completed</strong>
+          <span class="sv-wp-value" id="svWeekTaskValue">0/25</span>
+        </div>
+        <div class="sv-week-track-wide"><span id="svWeekTaskBar"></span></div>
+        <small id="svWeekTaskSub">0% of weekly goal</small>
+      </div>
+
+      <div class="sv-week-progress-item">
+        <div class="sv-week-progress-title">
+          <span class="sv-wp-icon green">◷</span>
+          <strong>Study Time</strong>
+          <span class="sv-wp-value" id="svWeekStudyValue">0h 0m / 14h</span>
+        </div>
+        <div class="sv-week-track-wide"><span id="svWeekStudyBar"></span></div>
+        <small id="svWeekStudySub">0% of weekly goal</small>
+      </div>
+
+      <div class="sv-week-progress-item">
+        <div class="sv-week-progress-title">
+          <span class="sv-wp-icon orange">♨</span>
+          <strong>Pomodoro Sessions</strong>
+          <span class="sv-wp-value" id="svWeekPomoValue">0/28</span>
+        </div>
+        <div class="sv-week-track-wide"><span id="svWeekPomoBar"></span></div>
+        <small id="svWeekPomoSub">0% of weekly goal</small>
+      </div>
+    </section>
+
+    <!-- 365-Day Study & Consistency Heatmap Matrix -->
+    <section class="card section pp-heatmap-card" id="ppDashboardHeatmap">
+      <div class="pp-heatmap-head">
+        <div>
+          <span class="pp-kicker">STUDY MOMENTUM · 365 DAYS</span>
+          <h3>Consistency &amp; Activity Heatmap</h3>
+          <p class="muted">Daily record of your focus sessions, tasks completed, and DSA problems solved.</p>
+        </div>
+        <div class="pp-heatmap-stats">
+          <div class="pp-hm-stat"><strong id="hmCurrentStreak">0 days</strong><span>Current streak</span></div>
+          <div class="pp-hm-stat"><strong id="hmBestStreak">0 days</strong><span>Longest streak</span></div>
+          <div class="pp-hm-stat"><strong id="hmTotalContrib">0</strong><span>Total activities</span></div>
+        </div>
+      </div>
+      <div class="pp-heatmap-scroll">
+        <div class="pp-heatmap-matrix" id="dashboardHeatmapMatrix"></div>
+      </div>
+      <div class="pp-heatmap-footer">
+        <span class="muted" style="font-size:12px;">Daily contributions in the last 12 months</span>
+        <div class="pp-heatmap-legend">
+          <span>Less</span>
+          <span class="hm-tile level-0"></span>
+          <span class="hm-tile level-1"></span>
+          <span class="hm-tile level-2"></span>
+          <span class="hm-tile level-3"></span>
+          <span class="hm-tile level-4"></span>
+          <span>More</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<section class="page hidden" id="tasksPage">
+  <div class="page-hero">
+    <div class="page-hero-main">
+      <span class="page-hero-eyebrow">STUDY PLANNING</span>
+      <h2 class="page-hero-title">Study Planner</h2>
+      <p class="page-hero-sub">Organize your tasks and stay on top of your studies.</p>
+    </div>
+    <div class="page-hero-actions">
+      <button class="btn primary tasks-add-top" id="tasksAddTopBtn" type="button">＋ &nbsp; Add Task</button>
+    </div>
+  </div>
+  <div class="tasks-stat-grid">
+    <div class="tasks-stat-card"><div class="tasks-stat-icon blue">✓</div><div><span>Total Tasks</span><strong id="taskStatTotal">0</strong><small>all planned work</small></div></div>
+    <div class="tasks-stat-card"><div class="tasks-stat-icon amber">◷</div><div><span>Pending</span><strong id="taskStatPending">0</strong><small>still to complete</small></div></div>
+    <div class="tasks-stat-card"><div class="tasks-stat-icon green">✓</div><div><span>Completed</span><strong id="taskStatDone">0</strong><small>finished tasks</small></div></div>
+    <div class="tasks-stat-card"><div class="tasks-stat-icon purple">◆</div><div><span>High Priority</span><strong id="taskStatHigh">0</strong><small>needs attention</small></div></div>
+  </div>
+  <div class="tasks-toolbar-card">
+    <div class="tasks-search-wrap"><span class="tasks-search-icon">⌕</span><input class="input tasks-search" id="taskSearch" placeholder="Search tasks..." /></div>
+    <select class="select tasks-filter" id="taskFilter"><option value="all">All</option><option value="pending">Pending</option><option value="completed">Completed</option><option value="high">High Priority</option></select>
+    <select class="select tasks-filter" id="taskSubjectFilter"><option value="all">All</option></select>
+    <input class="input tasks-date-filter" id="taskDateFilter" type="date" />
+  </div>
+  <div class="tasks-columns" id="tasksColumns">
+    <section class="tasks-column-card"><div class="tasks-column-head"><h3><span class="tasks-dot orange"></span>Pending <span id="pendingCountLabel" class="tasks-count">(0)</span></h3></div><div class="tasks-column-list" id="pendingTaskList"></div></section>
+    <section class="tasks-column-card"><div class="tasks-column-head"><h3><span class="tasks-dot green"></span>Completed <span id="completedCountLabel" class="tasks-count">(0)</span></h3></div><div class="tasks-column-list" id="completedTaskList"></div></section>
+  </div>
+  <div class="tasks-week-card">
+    <div class="tasks-week-head"><div><span class="tasks-week-eyebrow">WEEK AT A GLANCE</span><h3>This Week</h3></div><span class="tasks-week-total" id="weekMiniTotal">0 due this week</span></div>
+    <div class="tasks-week-strip" id="weekMiniStrip"></div>
+  </div>
+  <div class="tasks-composer-card hidden" id="tasksComposer">
+    <div class="tasks-composer-head"><h3>Add Task</h3><button class="tasks-close-btn" id="tasksCloseComposer" type="button">×</button></div>
+    <div class="task-form">
+      <input class="input" id="taskTitle" placeholder="Task title" />
+      <input class="input" id="taskSubject" placeholder="Subject (optional)" />
+      <input class="input" id="taskDue" type="date" />
+      <select class="select" id="taskPriority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select>
+      <button class="btn primary" id="addTaskBtn">Add</button>
+    </div>
+    <textarea class="textarea" id="taskDesc" placeholder="Task description (optional)"></textarea>
+  </div>
+  <div id="taskList" class="hidden"></div>
+</section>
+<section class="page hidden" id="notesPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">REVISION NOTES</span>
+          <h2 class="page-hero-title">Notes</h2>
+          <p class="page-hero-sub">Capture ideas, revision points, and reminders in one place.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Knowledge base</span></span>
+        </div>
+      </div>
+      <div class="stat-strip" id="notesStatStrip"></div>
+      <div class="subgrid">
+        <div class="card section add-card">
+          <div class="add-card-head">
+            <span class="add-card-icon">✎</span>
+            <div><h2>Add Note</h2><p class="add-card-sub">Jot it down before it slips away</p></div>
+          </div>
+          <input class="input" id="noteTitle" placeholder="Title" maxlength="80" />
+          <div style="height:10px"></div>
+          <textarea class="textarea" id="noteBody" placeholder="Write your note..." maxlength="2000"></textarea>
+          <div style="height:10px"></div>
+          <button class="btn primary" id="addNoteBtn">Add Note</button>
+        </div>
+        <div class="card section">
+          <div class="row between"><h2>Saved Notes</h2><input class="input" id="noteSearch" placeholder="Search notes" style="max-width:220px"></div>
+          <div id="noteList" class="note-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="calendarPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">PLANNING</span>
+          <h2 class="page-hero-title">Calendar</h2>
+          <p class="page-hero-sub">Keep deadlines, events, and important dates organized.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Monthly view</span></span>
+        </div>
+      </div><div class="card section"><div class="row between" style="margin-bottom:12px;"><h2 style="margin:0">Calendar</h2><div class="row"><button class="btn ghost" id="prevMonthBtn">Prev</button><strong id="monthLabel"></strong><button class="btn ghost" id="nextMonthBtn">Next</button></div></div><div class="calendar" id="calendarGrid"></div></div></section>
+
+    
+    <section class="page hidden" id="focusPage">
+      <div class="page-hero pomodoro-page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">Focus</span>
+          <h2 class="page-hero-title">Pomodoro Timer</h2>
+          <p class="page-hero-sub" id="focusHeroSub">Stay focused with timed study sessions. Take breaks when needed.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span id="focusTodayChip">0 sessions today</span></span>
+        </div>
+      </div>
+
+      <div class="grid stats pomodoro-stats">
+        <div class="card stat-modern pomo-stat">
+          <div class="stat-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 9v4l2.4 1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="stat-body"><div class="label">Focus Time</div><div class="value" id="focusTimeToday">0h 0m</div></div>
+        </div>
+        <div class="card stat-modern pomo-stat">
+          <div class="stat-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 6L2.5 12 8 18M16 6l5.5 6-5.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="stat-body"><div class="label">Sessions Today</div><div class="value" id="focusSessionsToday">0</div></div>
+        </div>
+        <div class="card stat-modern pomo-stat">
+          <div class="stat-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5h9l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12h7M8.5 15.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div class="stat-body"><div class="label">Break Time</div><div class="value" id="breakTimeToday">0m</div></div>
+        </div>
+        <div class="card stat-modern pomo-stat">
+          <div class="stat-icon-badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 15l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="stat-body"><div class="label">Tasks Pending</div><div class="value" id="tasksPendingCount">0</div></div>
+        </div>
+      </div>
+
+      <div class="pomodoro-main-grid">
+        <div class="card pomodoro-timer-card">
+          <div class="pomodoro-mode-tabs">
+            <button class="pomo-mode-btn modeBtn active" data-mode="1500" type="button">Focus</button>
+            <button class="pomo-mode-btn modeBtn" data-mode="300" type="button">Short Break</button>
+            <button class="pomo-mode-btn modeBtn" data-mode="900" type="button">Long Break</button>
+          </div>
+
+          <div class="pomodoro-circle-wrap">
+            <div class="pomodoro-circle">
+              <svg class="pomo-progress-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring-timer-track" cx="50" cy="50" r="45"/>
+                <circle class="ring-timer-fill" id="focusRingFill" cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="0"/>
+              </svg>
+              <div class="pomodoro-circle-content">
+                <div class="pomodoro-small-label" id="ringTimerLabel">Focus Time</div>
+                <div class="timer pomo-time" id="timerDisplay">25:00</div>
+                <div class="pomodoro-completed" id="pomoCompletedLabel">0 pomodoros completed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pomodoro-controls">
+            <button class="pomo-reset-btn" id="resetTimerBtn" type="button" aria-label="Reset timer">↻</button>
+            <button class="pomo-play-btn" id="startTimerBtn" type="button" aria-label="Start timer">▶</button>
+            <button class="pomo-pause-hidden" id="pauseTimerBtn" type="button" aria-hidden="true">Pause</button>
+          </div>
+        </div>
+
+        <div class="pomodoro-side">
+          <div class="card pomodoro-panel">
+            <h2>Timer Settings</h2>
+            <div class="pomo-settings-row">
+              <span>🔊 <strong>Sound alerts</strong></span>
+              <button class="toggle on" id="soundAlertsToggle" type="button" aria-label="Toggle sound alerts"></button>
+            </div>
+            <div class="pomo-settings-row">
+              <span>🔔 <strong>Browser notifications</strong></span>
+              <button class="toggle on" id="browserNotifToggle" type="button" aria-label="Toggle browser notifications"></button>
+            </div>
+          </div>
+
+          <div class="card pomodoro-panel">
+            <h2>✧ <span>Your Focus Pattern</span></h2>
+            <div class="pomo-insight-box" id="focusPatternText">
+              <strong>Start Your First Session</strong>
+              <span>Complete a Pomodoro to see personalized insights.</span>
+            </div>
+          </div>
+
+          <div class="card pomodoro-panel">
+            <h2>Focus on These Tasks</h2>
+            <div id="focusTaskSuggestions" class="pomo-task-box"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section pomo-session-card">
+        <h2>Session Log</h2>
+        <div id="focusLog"></div>
+      </div>
+    </section>
+
+<section class="page hidden" id="analyticsPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">Analytics</span>
+          <h2 class="page-hero-title">Your Progress</h2>
+          <p class="page-hero-sub" id="analyticsHeroSub">A weekly snapshot of tasks, habits, grades, and focus time.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span id="analyticsHeroChip">0% complete</span></span>
+        </div>
+      </div>
+      <div class="grid stats">
+        <div class="card stat-modern"><div class="stat-icon-badge"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="stat-body"><div class="label">Total Tasks</div><div class="value" id="paTotalTasks">0</div><div class="sublabel">completed all time</div></div></div>
+        <div class="card stat-modern tone-green"><div class="stat-icon-badge"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 9v4l2.4 1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="stat-body"><div class="label">Study Hours</div><div class="value" id="paStudyHours">0h</div><div class="sublabel">total focus time</div></div></div>
+        <div class="card stat-modern tone-amber"><div class="stat-icon-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M8 6L2.5 12 8 18M16 6l5.5 6-5.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="stat-body"><div class="label">Pomodoros</div><div class="value" id="paPomodoros">0</div><div class="sublabel">sessions completed</div></div></div>
+        <div class="card stat-modern tone-purple"><div class="stat-icon-badge">&lt;/&gt;</div><div class="stat-body"><div class="label">DSA Solved</div><div class="value" id="paDsaSolved">0/75</div><div class="sublabel">placement practice</div></div></div>
+        <div class="card stat-modern tone-purple"><div class="stat-icon-badge"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3v16a2 2 0 0 0 2 2h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 15l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="stat-body"><div class="label">Current Streak</div><div class="value" id="paStreak">0 days</div><div class="sublabel">keep it going!</div></div></div>
+      </div>
+
+      <div class="analytics-charts-grid">
+        <div class="card chart-card"><span class="section-kicker">WEEKLY</span><h2>Weekly Study Hours</h2><canvas id="weeklyStudyHoursChart" height="220"></canvas></div>
+        <div class="card chart-card"><span class="section-kicker">WEEKLY</span><h2>Tasks Completed</h2><canvas id="tasksCompletedChart" height="220"></canvas></div>
+        <div class="card chart-card"><span class="section-kicker">BREAKDOWN</span><h2>Tasks by Subject</h2><canvas id="subjectChart" height="220"></canvas></div>
+        <div class="card chart-card"><span class="section-kicker">BREAKDOWN</span><h2>Tasks by Priority</h2><canvas id="priorityChart" height="220"></canvas></div>
+      </div>
+
+      <div class="grid stats" style="margin-top:18px;">
+        <div class="card kpi-modern"><div class="kpi-top"><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="label">Completion Rate</div><div class="big" id="completionRate">0%</div></div>
+        <div class="card kpi-modern"><div class="kpi-top"><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="label">Habits Completed This Week</div><div class="big" id="habitRate">0</div></div>
+        <div class="card kpi-modern"><div class="kpi-top"><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4L2 8.5 12 13l10-4.5L12 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div><div class="label">Average Grade</div><div class="big" id="avgGrade">0</div></div>
+        <div class="card kpi-modern"><div class="kpi-top"><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M8 6L2.5 12 8 18M16 6l5.5 6-5.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="label">Goals Finished</div><div class="big" id="goalRate">0</div></div>
+      </div>
+      <div class="analytics-charts-grid">
+        <div class="card chart-card"><span class="section-kicker">PERFORMANCE</span><h2>Grades</h2><canvas id="gradeChart" height="220"></canvas></div>
+        <div class="card chart-card full"><span class="section-kicker">FOCUS</span><h2>Focus Sessions — Last 7 Days</h2><canvas id="weeklyFocusChart" height="140"></canvas></div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="timetablePage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">ACADEMIC PLANNING</span>
+          <h2 class="page-hero-title">Timetable</h2>
+          <p class="page-hero-sub">Organize your weekly subjects and class timings.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Weekly schedule</span></span>
+        </div>
+      </div>
+      <div class="card section tt-builder-card">
+        <div class="tt-builder-head">
+          <div>
+            <span class="tt-kicker">PLAN YOUR WEEK</span>
+            <h2>Add a class</h2>
+            <p>Keep your weekly schedule clear, visual, and easy to scan.</p>
+          </div>
+          <div class="tt-builder-badge">Weekly schedule</div>
+        </div>
+        <div class="tt-form">
+          <input class="input" id="ttName" placeholder="Subject" />
+          <select class="select" id="ttDay"><option>Mon</option><option>Tue</option><option>Wed</option><option>Thu</option><option>Fri</option><option>Sat</option></select>
+          <input class="input" id="ttTime" placeholder="9:00 - 10:00" />
+          <label class="tt-color-picker" title="Choose class color">
+            <span class="tt-color-dot"></span>
+            <span>Color</span>
+            <input id="ttColor" type="color" value="#2563eb" />
+          </label>
+          <button class="btn primary" id="addTtBtn">Add class</button>
+        </div>
+      </div>
+      <div class="card section tt-week-card">
+        <div class="tt-week-head">
+          <div>
+            <span class="tt-kicker">YOUR WEEK</span>
+            <h2>Weekly Timetable</h2>
+          </div>
+          <span class="tt-week-note">Mon – Sat</span>
+        </div>
+        <div id="ttBoard" class="tt-board"></div>
+        <div class="tt-list-wrap">
+          <div class="tt-list-head">
+            <h3>Scheduled classes</h3>
+            <span class="muted">Manage your entries below</span>
+          </div>
+          <div id="ttList" class="tt-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="gradesPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">ACADEMIC TRACKING</span>
+          <h2 class="page-hero-title">Grades</h2>
+          <p class="page-hero-sub">Track marks and view your academic summary.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Performance overview</span></span>
+        </div>
+      </div>
+      <div class="stat-strip" id="gradesStatStrip"></div>
+      <div class="card section add-card">
+        <div class="add-card-head">
+          <span class="add-card-icon">🎓</span>
+          <div><h2>Add Grade</h2><p class="add-card-sub">Log a score to update your GPA instantly</p></div>
+        </div>
+        <div class="grade-form">
+          <input class="input" id="gradeSubject" placeholder="Subject" maxlength="40" />
+          <input class="input" id="gradeScore" type="number" min="0" max="100" placeholder="Score (0-100)" />
+          <input class="input" id="gradeCredits" type="number" min="1" max="10" placeholder="Credits (1-10)" />
+          <button class="btn primary" id="addGradeBtn">Add</button>
+        </div>
+      </div>
+      <div class="subgrid" style="margin-top:18px;">
+        <div class="card section"><div class="row between"><h2>Grade Records</h2><span class="chip" id="gradeCount">0 grades</span></div><div id="gradeList" class="grade-list"></div></div>
+        <div class="card section gpa-summary-card">
+          <h2>Summary</h2>
+          <div class="gpa-ring" id="gpaRing" style="--gpa-pct:0%;">
+            <div class="gpa-ring-inner">
+              <div class="countdown" id="gpaBox">0.00</div>
+              <div class="gpa-ring-label">/ 10.0</div>
+            </div>
+          </div>
+          <div class="muted" style="text-align:center;margin-top:10px;">Calculated GPA, weighted by credits</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="habitsPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">HABIT BUILDING</span>
+          <h2 class="page-hero-title">Habit Tracker</h2>
+          <p class="page-hero-sub">Build consistent routines and see your weekly rhythm.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Weekly habits</span></span>
+        </div>
+      </div>
+      <div class="stat-strip" id="habitsStatStrip"></div>
+      <div class="card section add-card">
+        <div class="add-card-head">
+          <span class="add-card-icon">🔥</span>
+          <div><h2>Add Habit</h2><p class="add-card-sub">Small routines, tracked weekly</p></div>
+        </div>
+        <div class="habit-form"><input class="input" id="habitName" placeholder="Habit name" maxlength="40" /><input class="input" id="habitIcon" placeholder="Emoji e.g. 💧" maxlength="4" /><input class="input" id="habitTarget" placeholder="Target / week" type="number" min="1" max="7" /><button class="btn primary" id="addHabitBtn">Add</button></div>
+      </div>
+      <div class="card section" style="margin-top:18px;"><h2>Your Habits</h2><div id="habitList" class="habit-list"></div></div>
+    </section>
+
+    <section class="page hidden" id="flashcardsPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">ACTIVE RECALL</span>
+          <h2 class="page-hero-title">Flashcards</h2>
+          <p class="page-hero-sub">Create decks, review cards, and strengthen your memory.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Study smarter</span></span>
+        </div>
+      </div>
+      <div class="subgrid">
+        <div class="card section">
+          <h2>Create Deck / Card</h2>
+          <div class="flash-form"><input class="input" id="deckName" placeholder="Deck name" /><input class="input" id="cardQuestion" placeholder="Question" /><input class="input" id="cardAnswer" placeholder="Answer" /><button class="btn primary" id="addFlashBtn">Add</button></div>
+          <div id="deckFolders" class="row"></div>
+        </div>
+        <div class="card section">
+          <div class="row between"><h2>Study Card</h2><span class="chip" id="flashCount">0 cards</span></div>
+          <div class="flash-card" id="flashCard">Select a deck to study</div>
+          <div class="row between"><button class="btn ghost" id="prevFlashBtn">Prev</button><button class="btn ghost" id="flipFlashBtn">Flip</button><button class="btn ghost" id="nextFlashBtn">Next</button></div>
+          <div class="sm2-rating-row hidden" id="sm2RatingRow" style="margin-top:10px;">
+            <span class="sm2-rating-label">Spaced Repetition Rating:</span>
+            <div class="sm2-buttons-wrap">
+              <button class="sm2-btn again" data-grade="1" type="button" title="Failed recall - repeat in 10 mins">Again (10m)</button>
+              <button class="sm2-btn hard" data-grade="2" type="button" title="Difficult recall - review in 1 day">Hard (1d)</button>
+              <button class="sm2-btn good" data-grade="3" type="button" title="Good recall - review in 3 days">Good (3d)</button>
+              <button class="sm2-btn easy" data-grade="4" type="button" title="Instant recall - review in 6 days">Easy (6d)</button>
+            </div>
+          </div>
+          <div style="height:18px"></div>
+          <div id="flashList" class="flash-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page hidden" id="examsPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">EXAM PREP</span>
+          <h2 class="page-hero-title">Exam Countdowns</h2>
+          <p class="page-hero-sub">Track upcoming exams and keep every deadline visible.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Upcoming exams</span></span>
+        </div>
+      </div>
+      <div class="card section">
+        <h2>Add Exam</h2>
+        <div class="exam-form"><input class="input" id="examName" placeholder="Exam name" /><input class="input" id="examDate" type="date" /><input class="input" id="examSubject" placeholder="Subject" /><button class="btn primary" id="addExamBtn">Add</button></div>
+      </div>
+      <div class="card section" style="margin-top:18px;"><h2>Countdowns</h2><div id="examList" class="exam-list"></div></div>
+    </section>
+
+    <section class="page hidden" id="goalsPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">PERSONAL GOALS</span>
+          <h2 class="page-hero-title">Goals</h2>
+          <p class="page-hero-sub">Set targets, track progress, and keep your goals moving.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Progress plan</span></span>
+        </div>
+      </div>
+      <div class="card section">
+        <h2>Add Goal</h2>
+        <div class="goal-form"><input class="input" id="goalTitle" placeholder="Goal title" /><input class="input" id="goalTarget" type="number" min="1" placeholder="Target %" /><input class="input" id="goalProgressInput" type="number" min="0" max="100" placeholder="Current progress" /><button class="btn primary" id="addGoalBtn">Add</button></div>
+      </div>
+      <div class="card section" style="margin-top:18px;"><h2>Goals</h2><div id="goalList" class="goal-list"></div></div>
+    </section>
+
+    
+<section class="page hidden" id="internshipsPage">
+  <div class="page-hero">
+    <div class="page-hero-main">
+      <span class="page-hero-eyebrow">PLACEMENT PIPELINE</span>
+      <h2 class="page-hero-title">Internship Tracker</h2>
+      <p class="page-hero-sub">Track applications from wishlist to offer, and never lose a follow-up.</p>
+    </div>
+    <div class="page-hero-actions">
+      <span class="hero-chip"><span class="dot"></span><span id="internHeroChip">0 active</span></span>
+    </div>
+  </div>
+  <div class="intern-stat-grid" id="internStatGrid"></div>
+  <div class="card section add-card">
+    <div class="add-card-head">
+      <span class="add-card-icon">▣</span>
+      <div><h2>Add opportunity</h2><p class="add-card-sub">Log a company, role, and where you are in the process</p></div>
+    </div>
+    <div class="intern-form">
+      <input class="input" id="internCompany" placeholder="Company" maxlength="60" />
+      <input class="input" id="internRole" placeholder="Role (e.g. SDE Intern)" maxlength="80" />
+      <select class="select" id="internStatus">
+        <option value="wishlist">Wishlist</option>
+        <option value="applied" selected>Applied</option>
+        <option value="oa">Online assessment</option>
+        <option value="interview">Interview</option>
+        <option value="offer">Offer</option>
+        <option value="rejected">Rejected</option>
+      </select>
+      <input class="input" id="internDate" type="date" />
+      <input class="input" id="internLink" placeholder="Job link (optional)" />
+      <button class="btn primary" id="addInternBtn" type="button">Add</button>
+      <button class="btn ghost" id="openOutreachBtn" type="button" title="Generate cold email or LinkedIn referral message">✉️ Cold Outreach Generator</button>
+    </div>
+    <textarea class="textarea" id="internNotes" placeholder="Notes, contacts, or next follow-up"></textarea>
+  </div>
+  <div class="intern-board" id="internBoard"></div>
+</section>
+
+<!-- ============================================================
+     RESUME BUILDER & ATS SCANNER STUDIO
+     ============================================================ -->
+<section class="page hidden" id="resumePage">
+  <div class="page-hero">
+    <div class="page-hero-main">
+      <span class="page-hero-eyebrow">CAREER ACCELERATOR · ATS READY</span>
+      <h2 class="page-hero-title">Resume Studio &amp; ATS Scanner</h2>
+      <p class="page-hero-sub">Build a pristine Harvard-standard tech resume and optimize it against any job description with real-time ATS scoring.</p>
+    </div>
+    <div class="page-hero-actions">
+      <button class="btn ghost" id="resumeAutoFillBtn" type="button" title="Sync from PathPilot profile, grades &amp; DSA">⚡ Auto-fill from PathPilot</button>
+      <button class="btn primary" id="resumePrintBtn" type="button">🖨️ Export PDF / Print</button>
+    </div>
+  </div>
+
+  <!-- ATS Job Description Match Analyzer -->
+  <section class="card section resume-ats-card">
+    <div class="resume-ats-head">
+      <div class="resume-ats-title">
+        <span class="ats-icon">✦</span>
+        <div>
+          <h3>ATS Keyword &amp; Job Match Scanner</h3>
+          <p class="muted">Paste any job description below to test ATS keyword match, find missing skills, and strengthen bullet points.</p>
+        </div>
+      </div>
+      <button class="btn ghost small" id="toggleAtsPanelBtn" type="button">Scanner Active ▾</button>
+    </div>
+    <div class="resume-ats-body" id="resumeAtsBody">
+      <div class="ats-input-col">
+        <label class="field-label" for="atsJobDesc">Target Job Description (Paste from LinkedIn, Indeed, Google, etc.):</label>
+        <textarea class="textarea ats-textarea" id="atsJobDesc" placeholder="e.g. Seeking a Software Engineer Intern with experience in React, TypeScript, Python, REST APIs, SQL, Git, and data structures & algorithms..."></textarea>
+        <div class="ats-actions-bar">
+          <button class="btn primary small" id="runAtsScanBtn" type="button">⚡ Scan Resume Match</button>
+          <button class="btn ghost small" id="loadSampleJobBtn" type="button">Load Sample SWE Job</button>
+          <button class="btn ghost small" id="pasteJobDescBtn" type="button">📋 Paste</button>
+          <button class="btn ghost small" id="clearJobDescBtn" type="button">🧹 Clear</button>
+        </div>
+      </div>
+      <div class="ats-results-col">
+        <div class="ats-score-display">
+          <div class="ats-gauge-circle" id="atsGauge">
+            <span class="ats-gauge-val" id="atsScoreVal">0%</span>
+            <span class="ats-gauge-label">ATS MATCH</span>
+          </div>
+          <div class="ats-score-meta">
+            <strong id="atsScoreTier">Paste a job to scan</strong>
+            <p id="atsScoreDesc" class="muted">Scores above 75% typically pass initial ATS screening rounds.</p>
+            <div class="ats-checklist-strip">
+              <span class="ats-chk-item" id="chkLength">✓ 1-Page Standard</span>
+              <span class="ats-chk-item" id="chkContact">✓ Contact Details</span>
+              <span class="ats-chk-item" id="chkSkills">✓ Tech Stack</span>
+              <span class="ats-chk-item" id="chkVerbs">✓ Power Verbs</span>
+            </div>
+          </div>
+        </div>
+        <div class="ats-keywords-grid">
+          <div>
+            <span class="ats-subhead matched">✓ Matched Keywords (<span id="atsMatchedCount">0</span>)</span>
+            <div class="ats-chips matched" id="atsMatchedChips"><span class="muted" style="font-size:12px;">No scan yet</span></div>
+          </div>
+          <div>
+            <span class="ats-subhead missing">⚠️ Missing Keywords (<span id="atsMissingCount">0</span>) <small style="font-size:10px;font-weight:600;color:var(--pp-text-muted);">(click to insert)</small></span>
+            <div class="ats-chips missing" id="atsMissingChips"><span class="muted" style="font-size:12px;">No scan yet</span></div>
+          </div>
+        </div>
+        <div class="ats-verb-tips" id="atsVerbTips">
+          <span class="ats-subhead">💡 Power Action-Verb Recommendation</span>
+          <p class="muted" id="atsVerbText" style="font-size:13px;margin:4px 0 0;">Use quantified impact verbs: <em>Architected, Engineered, Optimized, Spearheaded, Automated, Reduced</em>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Split Screen Studio -->
+  <div class="resume-studio-layout">
+    <!-- Left: Structured Form Editor -->
+    <div class="resume-editor-pane">
+      <div class="resume-tabs">
+        <button class="resume-tab active" data-tab="contact" type="button">Contact</button>
+        <button class="resume-tab" data-tab="education" type="button">Education</button>
+        <button class="resume-tab" data-tab="experience" type="button">Experience</button>
+        <button class="resume-tab" data-tab="projects" type="button">Projects</button>
+        <button class="resume-tab" data-tab="skills" type="button">Skills</button>
+        <button class="resume-tab" data-tab="certifications" type="button">Certs &amp; Awards</button>
+      </div>
+
+      <div class="resume-tab-content card" id="resumeTabContact">
+        <h4>Personal &amp; Contact Details</h4>
+        <div class="resume-field-grid">
+          <label>Full Name <input class="input" id="resName" placeholder="e.g. Alex Rivera" /></label>
+          <label>Email <input class="input" id="resEmail" placeholder="you@example.edu" /></label>
+          <label>Phone Number <input class="input" id="resPhone" placeholder="+1 (555) 000-0000" /></label>
+          <label>Location <input class="input" id="resLocation" placeholder="San Francisco, CA" /></label>
+          <label>LinkedIn URL <input class="input" id="resLinkedin" placeholder="linkedin.com/in/alex" /></label>
+          <label>GitHub URL <input class="input" id="resGithub" placeholder="github.com/alex" /></label>
+          <label>Portfolio / Website <input class="input" id="resPortfolio" placeholder="alex.dev" /></label>
+        </div>
+        <label style="margin-top:12px;display:block;">
+          Professional Summary / Objective
+          <textarea class="textarea" id="resSummary" placeholder="Short 2-3 line summary highlighting your technical strengths and career direction..."></textarea>
+        </label>
+      </div>
+
+      <div class="resume-tab-content card hidden" id="resumeTabEducation">
+        <div class="resume-tab-head">
+          <h4>Education</h4>
+          <button class="btn ghost small" id="addEduBtn" type="button">＋ Add Education</button>
+        </div>
+        <div class="resume-items-list" id="resumeEduList"></div>
+      </div>
+
+      <div class="resume-tab-content card hidden" id="resumeTabExperience">
+        <div class="resume-tab-head">
+          <h4>Work &amp; Internship Experience</h4>
+          <button class="btn ghost small" id="addExpBtn" type="button">＋ Add Experience</button>
+        </div>
+        <div class="action-verb-helper">
+          <span>Action verbs:</span>
+          <button type="button" class="verb-chip">Architected</button>
+          <button type="button" class="verb-chip">Engineered</button>
+          <button type="button" class="verb-chip">Optimized</button>
+          <button type="button" class="verb-chip">Spearheaded</button>
+          <button type="button" class="verb-chip">Automated</button>
+        </div>
+        <div class="resume-items-list" id="resumeExpList"></div>
+      </div>
+
+      <div class="resume-tab-content card hidden" id="resumeTabProjects">
+        <div class="resume-tab-head">
+          <h4>Technical Projects</h4>
+          <button class="btn ghost small" id="addProjBtn" type="button">＋ Add Project</button>
+        </div>
+        <div class="resume-items-list" id="resumeProjList"></div>
+      </div>
+
+      <div class="resume-tab-content card hidden" id="resumeTabSkills">
+        <h4>Technical Skills</h4>
+        <div class="resume-skills-form">
+          <label>Languages <input class="input" id="resSkillLanguages" placeholder="JavaScript, Python, C++, Java, SQL" /></label>
+          <label>Frameworks &amp; Libraries <input class="input" id="resSkillFrameworks" placeholder="React, Node.js, Express, Next.js, Django" /></label>
+          <label>Developer Tools &amp; Cloud <input class="input" id="resSkillTools" placeholder="Git, Docker, AWS, GitHub Actions, Linux, Postman" /></label>
+          <label>Core CS &amp; Concepts <input class="input" id="resSkillConcepts" placeholder="Data Structures &amp; Algorithms, REST APIs, System Design, OOP" /></label>
+        </div>
+      </div>
+
+      <div class="resume-tab-content card hidden" id="resumeTabCertifications">
+        <div class="resume-tab-head">
+          <h4>Certifications &amp; Achievements</h4>
+          <button class="btn ghost small" id="addCertBtn" type="button">＋ Add Item</button>
+        </div>
+        <div class="resume-items-list" id="resumeCertList"></div>
+      </div>
+    </div>
+
+    <!-- Right: Live Real-Time ATS Sheet Preview -->
+    <div class="resume-preview-pane">
+      <div class="resume-preview-bar">
+        <div class="resume-theme-toggles">
+          <button class="res-theme-btn active" data-theme="modern" type="button">Modern Tech</button>
+          <button class="res-theme-btn" data-theme="classic" type="button">Classic Ivy</button>
+          <button class="res-theme-btn" data-theme="minimal" type="button">Minimal</button>
+        </div>
+        <div class="resume-bar-actions">
+          <span class="resume-page-meter" id="resumePageMeter">📄 1-Page Standard (100% Fit)</span>
+          <button class="btn ghost small" id="resumeExportJsonBtn" type="button" title="Export Resume JSON">💾 Export</button>
+          <button class="btn ghost small" id="resumeImportJsonBtn" type="button" title="Import Resume JSON">📂 Import</button>
+          <input type="file" id="resumeFileInput" accept=".json" style="display:none;" />
+        </div>
+      </div>
+
+      <div class="resume-sheet-container">
+        <div class="resume-paper modern" id="resumePaper">
+          <!-- Rendered live via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MOCK INTERVIEW SIMULATOR & STAR METHOD COACH
+     ============================================================ -->
+<section class="page hidden" id="interviewsPage">
+  <div class="page-hero">
+    <div class="page-hero-main">
+      <span class="page-hero-eyebrow">CAREER PREPARATION · FAANG MOCK</span>
+      <h2 class="page-hero-title">Mock Interview Simulator</h2>
+      <p class="page-hero-sub">Practice real-world behavioral and core technical interview questions with instant STAR framework scoring, strength analysis, and benchmark sample answers.</p>
+    </div>
+    <div class="page-hero-actions">
+      <span class="hero-chip"><span class="dot"></span><span id="interviewCountSolved">0 Completed</span></span>
+    </div>
+  </div>
+
+  <div class="interview-layout">
+    <!-- Category & Question Select -->
+    <div class="interview-sidebar">
+      <div class="int-search-wrap">
+        <input type="search" id="intSearchInput" class="input" placeholder="🔍 Search questions or companies..." />
+      </div>
+      <div class="interview-category-tabs">
+        <button class="int-cat-btn active" data-cat="all" type="button">All <span class="int-count-pill" id="catCountAll">0</span></button>
+        <button class="int-cat-btn" data-cat="behavioral" type="button">Behavioral <span class="int-count-pill" id="catCountBeh">0</span></button>
+        <button class="int-cat-btn" data-cat="technical" type="button">Technical <span class="int-count-pill" id="catCountTech">0</span></button>
+        <button class="int-cat-btn" data-cat="system" type="button">System Design <span class="int-count-pill" id="catCountSys">0</span></button>
+      </div>
+      <div class="interview-questions-list" id="interviewQuestionsList"></div>
+    </div>
+
+    <!-- Question Active Workspace -->
+    <div class="interview-workspace card">
+      <div class="interview-active-head">
+        <div class="int-company-pill" id="intCompanyPill">Google</div>
+        <div class="int-cat-pill" id="intCatPill">Behavioral</div>
+        <div class="int-diff-pill" id="intDiffPill">Medium</div>
+        <button class="int-voice-btn" id="intVoiceBtn" type="button" title="Speak your answer using voice recognition">🎙️ Voice Mode</button>
+        <div class="int-timer-wrap">
+          <span class="int-timer-icon">⏱</span>
+          <span class="int-timer-time" id="intTimer">03:00</span>
+          <button class="int-timer-btn" id="intTimerToggle" type="button">Start</button>
+          <button class="int-timer-btn reset" id="intTimerReset" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="interview-prompt-card">
+        <div class="interview-interviewer-avatar">
+          <span>AI</span>
+        </div>
+        <div class="interview-prompt-body">
+          <small>SIMULATED FAANG INTERVIEW QUESTION</small>
+          <h3 id="intQuestionText">Tell me about a time you faced a difficult technical bug or challenge under a tight deadline. How did you diagnose and resolve it?</h3>
+          <p id="intQuestionTip" class="muted">Tip: Structure your response using Situation, Task, Action, and Result with quantifiable metrics.</p>
+        </div>
+      </div>
+
+      <!-- Mode: Structured STAR vs Freeform -->
+      <div class="int-mode-switch">
+        <button class="int-mode-btn active" id="intModeStar" type="button">Guided STAR Method</button>
+        <button class="int-mode-btn" id="intModeFree" type="button">Freeform Answer</button>
+      </div>
+
+      <div id="intStarContainer" class="int-star-container">
+        <div class="star-metrics-detector" id="starMetricsDetector">
+          <span class="det-icon">💡</span>
+          <span id="detText">Tip: Use strong action verbs & quantifiable metrics (e.g. <em>reduced by 40%</em>, <em>sub-50ms</em>) to boost your score.</span>
+        </div>
+        <div class="star-field">
+          <label><strong>S</strong> — Situation <small>(What was the project, team, or challenge?)</small></label>
+          <textarea class="textarea" id="starSituation" rows="2" placeholder="e.g. During my summer internship at TechNova, our primary API gateway suffered intermittent latency spikes..."></textarea>
+        </div>
+        <div class="star-field">
+          <label><strong>T</strong> — Task <small>(What was your specific responsibility or goal?)</small></label>
+          <textarea class="textarea" id="starTask" rows="2" placeholder="e.g. My goal was to pinpoint the bottleneck and deploy a fix without taking down production services..."></textarea>
+        </div>
+        <div class="star-field">
+          <label><strong>A</strong> — Action <small>(What exact steps did YOU personally take?)</small></label>
+          <textarea class="textarea" id="starAction" rows="3" placeholder="e.g. I analyzed distributed APM traces, identified an unindexed N+1 query in PostgreSQL, added composite indices, and implemented Redis caching..."></textarea>
+        </div>
+        <div class="star-field">
+          <label><strong>R</strong> — Result <small>(What was the quantifiable outcome, metrics, and key learnings?)</small></label>
+          <textarea class="textarea" id="starResult" rows="2" placeholder="e.g. Reduced 99th-percentile response time by 68% (from 420ms to 134ms), resolved all timeout alerts, and documented the optimization guide..."></textarea>
+        </div>
+      </div>
+
+      <div id="intFreeContainer" class="int-free-container hidden">
+        <label class="field-label">Your Interview Response:</label>
+        <textarea class="textarea" id="intFreeAnswer" rows="8" placeholder="Type your complete answer here. Feel free to speak or think as if you are in a real interview..."></textarea>
+      </div>
+
+      <div class="int-action-row">
+        <button class="btn primary" id="intSubmitBtn" type="button">⚡ Submit &amp; Evaluate Answer</button>
+        <button class="btn ghost" id="intSampleAnswerBtn" type="button">Show Model Benchmark Answer</button>
+      </div>
+
+      <!-- Real-time Evaluation Card -->
+      <div class="int-evaluation-card hidden" id="intEvalCard">
+        <div class="int-eval-head">
+          <div>
+            <span class="pp-kicker">INTERVIEW EVALUATION SCORECARD</span>
+            <h3>Answer Analysis &amp; Diagnostic Feedback</h3>
+          </div>
+          <div class="int-eval-score-badge">
+            <strong id="intEvalScore">8.5</strong><span>/ 10</span>
+          </div>
+        </div>
+
+        <div class="int-eval-breakdown">
+          <div class="int-metric-bar-row">
+            <span>STAR Framework Structure</span>
+            <div class="int-bar-track"><div class="int-bar-fill" id="barStar" style="width: 85%;"></div></div>
+            <strong id="barStarVal">85%</strong>
+          </div>
+          <div class="int-metric-bar-row">
+            <span>Quantifiable Metrics &amp; Impact</span>
+            <div class="int-bar-track"><div class="int-bar-fill green" id="barMetrics" style="width: 75%;"></div></div>
+            <strong id="barMetricsVal">75%</strong>
+          </div>
+          <div class="int-metric-bar-row">
+            <span>Action &amp; Ownership ("I" vs "We")</span>
+            <div class="int-bar-track"><div class="int-bar-fill purple" id="barOwnership" style="width: 90%;"></div></div>
+            <strong id="barOwnershipVal">90%</strong>
+          </div>
+          <div class="int-metric-bar-row">
+            <span>Technical Depth &amp; Specificity</span>
+            <div class="int-bar-track"><div class="int-bar-fill amber" id="barDepth" style="width: 80%;"></div></div>
+            <strong id="barDepthVal">80%</strong>
+          </div>
+        </div>
+
+        <div class="int-eval-grid">
+          <div class="int-eval-box positive">
+            <strong>✓ Key Strengths</strong>
+            <ul id="intEvalStrengths"></ul>
+          </div>
+          <div class="int-eval-box warning">
+            <strong>⚠️ Areas to Elevate</strong>
+            <ul id="intEvalImprovements"></ul>
+          </div>
+        </div>
+        <div class="int-eval-star-checklist" id="intStarChecklist">
+          <span class="star-check-badge" id="scSituation">Situation: Checked</span>
+          <span class="star-check-badge" id="scTask">Task: Checked</span>
+          <span class="star-check-badge" id="scAction">Action: Checked</span>
+          <span class="star-check-badge" id="scResult">Result / Metrics: Checked</span>
+        </div>
+      </div>
+
+      <!-- Benchmark Sample Answer Modal/Card -->
+      <div class="int-benchmark-card hidden" id="intBenchmarkCard">
+        <div class="int-bm-head">
+          <strong>🏆 Benchmark Model Response (Senior Candidate Standard)</strong>
+          <button class="int-bm-close" id="intCloseBm" type="button">×</button>
+        </div>
+        <div class="int-bm-body" id="intBenchmarkText"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PUBLIC STUDENT PORTFOLIO SHOWCASE
+     ============================================================ -->
+<section class="page hidden" id="portfolioPage">
+  <div class="page-hero">
+    <div class="page-hero-main">
+      <span class="page-hero-eyebrow">SHOWCASE · CAREER BRANDING</span>
+      <h2 class="page-hero-title">Public Portfolio Showcase</h2>
+      <p class="page-hero-sub">Generate a verified, mobile-responsive developer portfolio showcasing your PathPilot DSA accomplishments, CGPA, projects, and skills. Ready to share with recruiters or host on GitHub Pages.</p>
+    </div>
+    <div class="page-hero-actions">
+      <button class="btn ghost" id="portfolioCopyHtmlBtn" type="button">📋 Copy Standalone HTML</button>
+      <button class="btn primary" id="portfolioDownloadBtn" type="button">📥 Download Portfolio File</button>
+    </div>
+  </div>
+
+  <div class="portfolio-studio-grid">
+    <!-- Controls Sidebar -->
+    <div class="portfolio-controls card">
+      <h4>Portfolio Settings</h4>
+      <label>
+        Tagline / Headline
+        <input class="input" id="pfHeadline" placeholder="Aspiring Software Engineer &amp; CS Student" />
+      </label>
+      <label>
+        Short Bio
+        <textarea class="textarea" id="pfBio" rows="3" placeholder="Passionate about building scalable web applications, mastering algorithms, and creating high-impact software."></textarea>
+      </label>
+      <label>
+        GitHub Profile Link
+        <input class="input" id="pfGithub" placeholder="https://github.com/yourusername" />
+      </label>
+      <label>
+        LinkedIn Profile Link
+        <input class="input" id="pfLinkedin" placeholder="https://linkedin.com/in/yourprofile" />
+      </label>
+      <div class="pf-toggle-group">
+        <span class="field-label">Included Sections:</span>
+        <label class="pf-checkbox-label"><input type="checkbox" id="pfShowStats" checked /> <span>Verified PathPilot Stats (DSA, GPA, Focus)</span></label>
+        <label class="pf-checkbox-label"><input type="checkbox" id="pfShowProjects" checked /> <span>Featured Projects Grid</span></label>
+        <label class="pf-checkbox-label"><input type="checkbox" id="pfShowSkills" checked /> <span>Technical Skills Cloud</span></label>
+        <label class="pf-checkbox-label"><input type="checkbox" id="pfShowContact" checked /> <span>Contact &amp; Connect Footer</span></label>
+      </div>
+      <button class="btn primary" id="pfRefreshPreviewBtn" type="button" style="width:100%;margin-top:14px;">Update Preview ⟳</button>
+    </div>
+
+    <!-- Live Preview -->
+    <div class="portfolio-preview-container card">
+      <div class="pf-preview-bar">
+        <div class="pf-browser-dots"><span></span><span></span><span></span></div>
+        <div class="pf-browser-address">https://pathpilot.me/<span id="pfSlugPreview">student</span></div>
+        <span class="pf-preview-tag">LIVE PREVIEW</span>
+      </div>
+      <div class="portfolio-live-page" id="portfolioLiveCanvas">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page hidden" id="settingsPage">
+  <div class="profile-page">
+    <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">ACCOUNT</span>
+          <h2 class="page-hero-title">Your Profile</h2>
+          <p class="page-hero-sub">Build your student identity and collect milestones as you make progress.</p>
+      </div>
+      <div class="page-hero-actions">
+        <div class="profile-avatar profile-avatar-top" id="profileHeaderAvatar">P</div>
+      </div>
+    </div>
+
+    <div class="profile-hero-card card">
+      <div class="profile-hero-avatar" id="profileHeroAvatar">P</div>
+      <div class="profile-hero-copy">
+        <div class="eyebrow">STUDENT</div>
+        <h2 id="profileHeroName">Student</h2>
+        <p id="profileHeroEmail">student@pathpilot.local</p>
+        <span class="profile-goal-pill" id="profileHeroGoal">Software Engineering</span>
+      </div>
+    </div>
+
+    <div class="profile-content-grid">
+      <section class="card section profile-info-card">
+        <div class="section-kicker">ABOUT YOU</div>
+        <h2>Profile information</h2>
+        <div class="profile-form-grid">
+          <label>
+            Full name
+            <input class="input" id="profileName" placeholder="Your full name">
+          </label>
+          <label>
+            Email address
+            <input class="input" id="profileEmail" placeholder="you@example.com" readonly>
+          </label>
+          <label>
+            Target career goal
+            <select class="select" id="profileCareerGoal">
+              <option>Software Engineering</option>
+              <option>AI / ML Engineering</option>
+              <option>Data Science</option>
+              <option>Data Engineering</option>
+              <option>Cybersecurity</option>
+              <option>Product / PM</option>
+              <option>Entrepreneurship</option>
+              <option>Higher Studies</option>
+            </select>
+          </label>
+          <label>
+            College / University
+            <input class="input" id="profileCollege" placeholder="e.g. Chitkara University">
+          </label>
+          <label>
+            Graduation year
+            <select class="select" id="profileGraduationYear">
+              <option value="">Select year</option>
+              <option>2026</option><option>2027</option><option>2028</option>
+              <option>2029</option><option>2030</option><option>2031</option>
+              <option>2032</option>
+            </select>
+          </label>
+        </div>
+        <button class="btn primary profile-save-btn" id="profileSaveBtn" type="button">✓ Save changes</button>
+        <div class="profile-save-message" id="profileSaveMessage" aria-live="polite"></div>
+      </section>
+
+      <section class="card section achievements-card">
+        <div class="section-kicker">MILESTONES</div>
+        <h2>Achievements</h2>
+        <p class="muted">Badges unlock automatically as you use PathPilot.</p>
+        <div class="achievement-grid" id="achievementGrid"></div>
+      </section>
+    </div>
+
+    <section class="card section profile-about-card">
+      <div class="section-kicker">ABOUT PATHPILOT</div>
+      <h2>Your student workspace</h2>
+      <p>PathPilot keeps your study planning, DSA practice, tasks, notes, goals and focus sessions together. Your badges celebrate meaningful progress without turning your profile into another dashboard full of counters.</p>
+      <div class="profile-principles">
+        <span>✓ Progress over perfection</span>
+        <span>✓ Built for consistency</span>
+        <span>✓ One focused workspace</span>
+      </div>
+    </section>
+
+    <section class="card section profile-data-card">
+      <div class="section-kicker">YOUR DATA</div>
+      <h2>Backup &amp; portability</h2>
+      <p class="muted">Download a backup of your PathPilot study data or restore it on this browser. Backups do not include passwords or login credentials.</p>
+      <div class="profile-data-actions">
+        <button class="btn primary" id="exportDataBtn" type="button">↓ Export my data</button>
+        <button class="btn ghost" id="importDataBtn" type="button">↑ Import backup</button>
+        <input id="importDataFile" type="file" accept="application/json,.json" hidden>
+      </div>
+      <p class="profile-data-note">Importing replaces the current study data in this browser. Export a backup first if you want to keep a copy.</p>
+    </section>
+
+    <section class="card section profile-account-card">
+      <div>
+        <div class="section-kicker">ACCOUNT</div>
+        <h2>Account actions</h2>
+        <p class="muted">Sign out of this browser when you're finished.</p>
+      </div>
+      <button class="btn danger" id="profileLogoutBtn" type="button">Logout</button>
+    </section>
+  </div>
+</section>
+
+
+
+<section class="page hidden" id="dsaProgressPage">
+  <div class="dsa-progress-page">
+    <div class="page-hero">
+      <div class="page-hero-main">
+        <span class="page-hero-eyebrow">PLACEMENT PREP</span>
+        <h2 class="page-hero-title">DSA Progress</h2>
+        <p class="page-hero-sub">See exactly where you stand across the 75-problem sheet.</p>
+      </div>
+      <div class="page-hero-actions">
+        <span class="hero-chip"><span class="dot"></span><span id="dsaProgressChip">0% complete</span></span>
+      </div>
+    </div>
+
+    <section class="dsp-hero-card card">
+      <div class="dsp-hero-main">
+        <div>
+          <span class="dsp-kicker">YOUR PROGRESS</span>
+          <h1><span id="dspSolvedHero">0</span> of 75 solved</h1>
+          <p id="dspHeroSub">Start with one problem today and build your consistency.</p>
+        </div>
+        <div class="dsp-hero-action">
+          <button class="btn primary" id="dspContinueBtn" type="button">Continue solving →</button>
+        </div>
+      </div>
+      <div class="dsp-hero-progress">
+        <div class="dsp-progress-track"><span id="dspHeroBar"></span></div>
+        <strong id="dspHeroPct">0%</strong>
+      </div>
+    </section>
+
+    <section class="dsp-focus-card card">
+      <div class="dsp-focus-head">
+        <div>
+          <span class="dsp-kicker">WHAT TO FOCUS ON</span>
+          <h2 id="dspFocusTitle">Build your momentum</h2>
+        </div>
+        <button class="dsp-refresh-btn" id="dspRefreshFocus" type="button">↻ Refresh</button>
+      </div>
+      <p id="dspFocusText">Solve a couple of focused problems and keep your streak moving.</p>
+      <div class="dsp-chip-row" id="dspFocusChips"></div>
+    </section>
+
+    <section class="dsp-activity card">
+      <div class="dsp-activity-top">
+        <div>
+          <span class="dsp-kicker">CONSISTENCY</span>
+          <h2><span id="dspYearSolves">0</span> DSA solves in the past year</h2>
+        </div>
+        <div class="dsp-activity-summary">
+          <span><strong id="dspActiveDays">0</strong> active days</span>
+          <span>Max streak <strong id="dspMaxStreak">0</strong></span>
+        </div>
+      </div>
+      <div class="dsp-heatmap" id="dspHeatmap"></div>
+    </section>
+
+    <section class="dsp-stats-grid">
+      <article class="dsp-stat-card card">
+        <span class="dsp-stat-label">SOLVED</span>
+        <strong id="dspSolvedStat">0/75</strong>
+        <small id="dspSolvedMeta">0 completed</small>
+      </article>
+      <article class="dsp-stat-card card">
+        <span class="dsp-stat-label">OVERALL PROGRESS</span>
+        <strong id="dspOverallStat">0%</strong>
+        <small>of the full sheet</small>
+      </article>
+      <article class="dsp-stat-card card">
+        <span class="dsp-stat-label">CURRENT STREAK</span>
+        <strong class="dsp-streak-value" id="dspStreakStat">0 days</strong>
+        <small id="dspBestStreak">Best: 0 days</small>
+      </article>
+    </section>
+
+    <section class="dsp-difficulty card">
+      <div class="dsp-section-head">
+        <div>
+          <span class="dsp-kicker">BREAKDOWN</span>
+          <h2>By difficulty</h2>
+        </div>
+      </div>
+      <div id="dspDifficultyRows" class="dsp-difficulty-rows"></div>
+    </section>
+
+    <section class="dsp-topic-section">
+      <div class="dsp-section-head dsp-topic-head">
+        <div>
+          <span class="dsp-kicker">BREAKDOWN</span>
+          <h2>By topic</h2>
+        </div>
+        <span class="dsp-muted">Completion across every topic</span>
+      </div>
+      <div id="dspTopicGrid" class="dsp-topic-grid"></div>
+    </section>
+  </div>
+</section>
+
+<!-- AI ASSISTANT PAGE -->
+    <section class="page hidden" id="dsaPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">PLACEMENT PREP</span>
+          <h2 class="page-hero-title">DSA Prep</h2>
+          <p class="page-hero-sub">Build placement-ready problem-solving skills with a focused DSA sheet.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>75-problem sheet</span></span>
+        </div>
+      </div><div class="dsa-page-wrap">
+
+    <!-- Stats row (kept in DOM for JS, hidden per simplified view) -->
+    <section class="stats-grid dsa-stats dsa-hidden-block">
+      <div class="stat-card">
+        <span class="stat-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </span>
+        <div>
+          <strong id="totalSolved">0</strong><small> / 75 solved</small>
+          <div class="dsa-progress-bar-wrap">
+            <div class="dsa-progress-bar-bg"><div class="dsa-progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+            <div class="dsa-progress-label" id="progressLabel">0% complete</div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon easy-dot">●</span>
+        <div><strong id="easySolved">0</strong><small> / 27 Easy</small></div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon medium-dot">●</span>
+        <div><strong id="mediumSolved">0</strong><small> / 45 Medium</small></div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon hard-dot">●</span>
+        <div><strong id="hardSolved">0</strong><small> / 3 Hard</small></div>
+      </div>
+    </section>
+
+    <!-- Insights: Topic Chart + Recently Solved (kept in DOM for JS, hidden per simplified view) -->
+    <section class="dsa-insights dsa-hidden-block">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow">TOPIC COVERAGE</span>
+            <h2>Strengths & Weak Areas</h2>
+          </div>
+        </div>
+        <div style="height: 360px; width: 100%;">
+          <canvas id="topicChart"></canvas>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow">ACTIVITY</span>
+            <h2>Recently Solved</h2>
+          </div>
+        </div>
+        <div id="recentlySolved"></div>
+      </div>
+    </section>
+
+    <!-- Header -->
+    <div class="dsa-simple-head">
+      <span class="eyebrow">PROBLEMS</span>
+      <h1 id="dsaProblemsCount">75 problems in view</h1>
+    </div>
+
+    <!-- Compact progress strip -->
+    <section class="dsa-quick-progress">
+      <div class="dqp-ring" id="dqpRing" style="--dqp-pct:0%;">
+        <div class="dqp-ring-inner"><span id="dqpPct">0%</span></div>
+      </div>
+      <div class="dqp-body">
+        <div class="dqp-top">
+          <strong><span id="dqpSolved">0</span> / 75 solved</strong>
+          <button class="dqp-link" id="dqpViewProgressBtn" type="button">Full progress →</button>
+        </div>
+        <div class="dqp-bar-track"><span class="dqp-bar-fill" id="dqpBarFill" style="width:0%"></span></div>
+        <div class="dqp-legend">
+          <span><i class="dqp-dot easy"></i>Easy <b id="dqpEasy">0</b>/27</span>
+          <span><i class="dqp-dot medium"></i>Medium <b id="dqpMedium">0</b>/45</span>
+          <span><i class="dqp-dot hard"></i>Hard <b id="dqpHard">0</b>/3</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="panel dsa-simple-controls dsa-search-card">
+      <div class="dsa-controls">
+        <div class="dsa-search-wrap">
+          <svg class="dsa-search-icon" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="search" id="searchInput" placeholder="Search problems by title or topic…" aria-label="Search DSA problems">
+        </div>
+        <select id="diffFilter" aria-label="Filter by difficulty">
+          <option value="All">All Difficulty</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+        <select id="statusFilter" aria-label="Filter by status">
+          <option value="All">All Status</option>
+          <option value="Solved">Solved</option>
+          <option value="Unsolved">Unsolved</option>
+        </select>
+        <button class="btn btn-secondary btn-small" id="expandAllBtn" type="button">Expand All</button>
+        <button class="btn btn-secondary btn-small" id="resetBtn">Reset All</button>
+        <button class="btn btn-primary btn-small" id="openDsaSandboxBtn" type="button">⚡ Code Sandbox</button>
+      </div>
+    </section>
+
+    <!-- Problem list -->
+    <section id="problemContainer" style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 32px;"></section>
+
+  </div></section>
+<section class="page hidden" id="aiPage">
+      <div class="page-hero">
+        <div class="page-hero-main">
+          <span class="page-hero-eyebrow">STUDY SUPPORT</span>
+          <h2 class="page-hero-title">AI Assistant</h2>
+          <p class="page-hero-sub">Use focused study tools to learn, plan, quiz, and revise.</p>
+        </div>
+        <div class="page-hero-actions">
+          <span class="hero-chip"><span class="dot"></span><span>Study tools</span></span>
+        </div>
+      </div>
+      <div class="ai-layout">
+        <!-- Left: Mode selector -->
+        <div class="ai-sidebar-panel">
+          <div class="ai-mode-card active" data-mode="tutor" onclick="setAiMode('tutor',this)">
+            <div class="ai-mode-icon">🎓</div>
+            <div class="ai-mode-title">Study Tutor</div>
+            <div class="ai-mode-desc">Explain concepts, answer questions, and teach any subject</div>
+          </div>
+          <div class="ai-mode-card" data-mode="planner" onclick="setAiMode('planner',this)">
+            <div class="ai-mode-icon">📅</div>
+            <div class="ai-mode-title">Study Planner</div>
+            <div class="ai-mode-desc">Get a personalized study schedule based on your tasks & exams</div>
+          </div>
+          <div class="ai-mode-card" data-mode="quiz" onclick="setAiMode('quiz',this)">
+            <div class="ai-mode-icon">❓</div>
+            <div class="ai-mode-title">Quiz Me</div>
+            <div class="ai-mode-desc">Generate questions on any topic to test your knowledge</div>
+          </div>
+          <div class="ai-mode-card" data-mode="essay" onclick="setAiMode('essay',this)">
+            <div class="ai-mode-icon">✍️</div>
+            <div class="ai-mode-title">Essay Helper</div>
+            <div class="ai-mode-desc">Brainstorm, outline, and improve your writing</div>
+          </div>
+          <div class="ai-mode-card" data-mode="flashgen" onclick="setAiMode('flashgen',this)">
+            <div class="ai-mode-icon">⚡</div>
+            <div class="ai-mode-title">Flashcard Gen</div>
+            <div class="ai-mode-desc">Generate flashcard Q&A pairs from any topic or notes</div>
+          </div>
+          <div class="ai-mode-card" data-mode="coach" onclick="setAiMode('coach',this)">
+            <div class="ai-mode-icon">💪</div>
+            <div class="ai-mode-title">Motivation Coach</div>
+            <div class="ai-mode-desc">Beat procrastination and stay focused with personalized tips</div>
+          </div>
+          <button class="btn ghost" style="font-size:13px;padding:10px;border-radius:12px;" onclick="clearAiChat()">🗑 Clear Chat</button>
+        </div>
+
+        <!-- Right: Chat panel -->
+        <div class="ai-chat-panel">
+          <div class="ai-chat-header">
+            <div class="ai-chat-header-icon" id="aiApiKeyBtn" onclick="setAiApiKey()" title="Set your AI API key" style="cursor:pointer;">✦</div>
+            <div class="ai-chat-header-info">
+              <strong id="aiModeLabel">Study Tutor</strong>
+              <span id="aiModeDesc">Works offline with your PathPilot data. Optional API key for live AI.</span>
+            </div>
+            <div class="ai-chat-status" id="aiStatusDot"></div>
+          </div>
+          <div class="ai-quick-prompts" id="aiQuickPrompts"></div>
+          <div class="ai-messages" id="aiMessages">
+            <div class="ai-welcome" id="aiWelcome">
+              <div class="ai-welcome-icon">✦</div>
+              <h3>AI Study Assistant</h3>
+              <p>Choose a mode on the left, then ask me anything! I can tutor you, build a study plan, quiz you, help with essays, and more.</p>
+            </div>
+          </div>
+          <div class="ai-input-bar">
+            <textarea id="aiInput" placeholder="Ask anything…" rows="1" onkeydown="aiInputKeydown(event)" oninput="autoResizeAiInput(this)"></textarea>
+            <button class="ai-send-btn" id="aiSendBtn" onclick="sendAiMessage()">➤</button>
+          </div>
+        </div>
+      </div>
+    </section>
+     </div>
+  </main>
+</div>
+
+<div class="pp-overlay hidden" id="ppPaletteOverlay" aria-hidden="true">
+  <div class="pp-command-palette" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="pp-command-search"><span>⌕</span><input id="ppCommandInput" autocomplete="off" placeholder="Search PathPilot…"/><kbd>ESC</kbd></div>
+    <div class="pp-command-meta">Quick actions <span>Ctrl K</span></div>
+    <div class="pp-command-list" id="ppCommandList"></div>
+  </div>
+</div>
+<div class="pp-activity-popover hidden" id="ppActivityPopover" role="dialog" aria-label="Recent activity">
+  <div class="pp-activity-head"><div><span class="pp-kicker">ACTIVITY</span><h3>Recent momentum</h3></div><button id="ppCloseActivity" type="button">×</button></div>
+  <div id="ppActivityList" class="pp-activity-list"></div>
+</div>
+<div class="pp-nav-overlay hidden" id="ppNavOverlay"></div>
+<div class="toast" id="toast"></div>
+
+<!-- ============================================================
+     INTERACTIVE DSA CODE RUNNER & SANDBOX SLIDE-OVER
+     ============================================================ -->
+<div class="dsa-runner-modal hidden" id="dsaRunnerModal" role="dialog" aria-modal="true" aria-label="Interactive DSA Code Runner">
+  <div class="dsa-runner-container">
+    <div class="dsa-runner-top">
+      <div class="dsa-runner-title-group">
+        <span class="dsa-runner-badge" id="runnerDiff">Easy</span>
+        <h3 id="runnerTitle">Two Sum</h3>
+        <span class="dsa-runner-topic" id="runnerTopic">Arrays</span>
+        <a id="runnerLeetcodeLink" href="#" target="_blank" rel="noopener noreferrer" class="runner-ext-link">Open on LeetCode ↗</a>
+      </div>
+      <div class="dsa-runner-top-actions">
+        <button class="btn ghost small" id="runnerResetCodeBtn" type="button">↺ Reset Code</button>
+        <button class="dsa-runner-close" id="runnerCloseBtn" type="button" aria-label="Close runner">×</button>
+      </div>
+    </div>
+
+    <div class="dsa-runner-split">
+      <!-- Left: Description, Examples, Constraints, Hints -->
+      <div class="dsa-runner-left">
+        <div class="runner-section">
+          <h4>Problem Statement</h4>
+          <p id="runnerDesc" class="runner-desc-text">Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</p>
+        </div>
+
+        <div class="runner-section">
+          <h4>Examples</h4>
+          <div id="runnerExamples" class="runner-examples-box"></div>
+        </div>
+
+        <div class="runner-section">
+          <h4>Constraints &amp; Complexity Target</h4>
+          <ul id="runnerConstraints" class="runner-constraints-list"></ul>
+        </div>
+
+        <div class="runner-accordion">
+          <button class="runner-acc-btn" id="runnerHintToggle" type="button">💡 Hints &amp; Optimal Approach (Click to expand) ▾</button>
+          <div class="runner-acc-content hidden" id="runnerHintContent"></div>
+        </div>
+      </div>
+
+      <!-- Right: Code Editor & Test Cases -->
+      <div class="dsa-runner-right">
+        <div class="runner-editor-bar">
+          <div class="runner-lang-select">
+            <span>Language:</span>
+            <select id="runnerLangSelect" class="select-small">
+              <option value="javascript">JavaScript (Live In-Browser Execution)</option>
+              <option value="python">Python 3 (Template)</option>
+              <option value="cpp">C++ (Template)</option>
+            </select>
+          </div>
+          <span class="runner-exec-tag">⚡ Sub-millisecond Execution Engine</span>
+        </div>
+
+        <div class="runner-editor-wrapper">
+          <textarea id="runnerCodeEditor" class="runner-code-area" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+        </div>
+
+        <div class="runner-bottom-panel">
+          <div class="runner-bottom-actions">
+            <button class="btn primary runner-run-btn" id="runnerExecuteBtn" type="button">▶ Run Test Cases</button>
+            <span class="runner-run-status" id="runnerStatus">Ready to execute</span>
+          </div>
+
+          <div class="runner-results-box" id="runnerResultsBox">
+            <div class="runner-results-empty">Click "Run Test Cases" to compile and execute your solution.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     INTERNSHIP OUTREACH & COLD EMAIL GENERATOR MODAL
+     ============================================================ -->
+<div class="pp-modal-wrap hidden" id="internOutreachModal" role="dialog" aria-modal="true" aria-label="Internship Outreach Generator">
+  <div class="modal pp-outreach-modal">
+    <div class="modal-header">
+      <div>
+        <span class="pp-kicker">COLD OUTREACH ACCELERATOR</span>
+        <h3 id="outreachModalTitle">Generate Outreach Message</h3>
+      </div>
+      <button class="close-btn" id="closeOutreachModal" type="button">×</button>
+    </div>
+    <div class="outreach-template-types">
+      <button class="outreach-tab-btn active" data-type="recruiter" type="button">Cold Email to Recruiter</button>
+      <button class="outreach-tab-btn" data-type="alumni" type="button">LinkedIn Alumni Referral</button>
+      <button class="outreach-tab-btn" data-type="manager" type="button">Hiring Manager Pitch</button>
+      <button class="outreach-tab-btn" data-type="thankyou" type="button">Post-Interview Follow-Up</button>
+    </div>
+    <div class="outreach-body">
+      <label class="field-label">Subject Line:</label>
+      <input class="input" id="outreachSubject" readonly />
+      <label class="field-label" style="margin-top:10px;">Generated Message Body:</label>
+      <textarea class="textarea" id="outreachBody" rows="10"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn ghost" id="outreachCloseBtn" type="button">Close</button>
+      <button class="btn primary" id="outreachCopyBtn" type="button">📋 Copy to Clipboard</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     KEYBOARD SHORTCUTS CHEATSHEET MODAL (?)
+     ============================================================ -->
+<div class="pp-modal-wrap hidden" id="ppShortcutsModal" role="dialog" aria-modal="true" aria-label="Keyboard Shortcuts">
+  <div class="modal pp-shortcuts-modal">
+    <div class="modal-header">
+      <div>
+        <span class="pp-kicker">KEYBOARD NAVIGATION</span>
+        <h3>PathPilot Shortcuts</h3>
+      </div>
+      <button class="close-btn" id="closeShortcutsModal" type="button">×</button>
+    </div>
+    <div class="shortcuts-grid">
+      <div class="shortcut-item"><kbd>Ctrl</kbd> + <kbd>K</kbd> <span>Open Command Palette</span></div>
+      <div class="shortcut-item"><kbd>?</kbd> <span>Open this Shortcuts cheat sheet</span></div>
+      <div class="shortcut-item"><kbd>T</kbd> <span>Toggle Dark / Light Theme</span></div>
+      <div class="shortcut-item"><kbd>G</kbd> then <kbd>D</kbd> <span>Go to Dashboard</span></div>
+      <div class="shortcut-item"><kbd>G</kbd> then <kbd>R</kbd> <span>Go to Resume Builder &amp; ATS</span></div>
+      <div class="shortcut-item"><kbd>G</kbd> then <kbd>M</kbd> <span>Go to Mock Interviews</span></div>
+      <div class="shortcut-item"><kbd>G</kbd> then <kbd>S</kbd> <span>Go to DSA Prep</span></div>
+      <div class="shortcut-item"><kbd>G</kbd> then <kbd>I</kbd> <span>Go to Internships</span></div>
+      <div class="shortcut-item"><kbd>G</kbd> then <kbd>T</kbd> <span>Go to Study Planner Tasks</span></div>
+      <div class="shortcut-item"><kbd>G</kbd> then <kbd>F</kbd> <span>Go to Pomodoro Focus</span></div>
+      <div class="shortcut-item"><kbd>G</kbd> then <kbd>P</kbd> <span>Go to Public Portfolio</span></div>
+      <div class="shortcut-item"><kbd>Esc</kbd> <span>Close any modal or palette</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

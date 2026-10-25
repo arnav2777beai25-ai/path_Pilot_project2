@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sign up | PathPilot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="auth.css?v=2">
+</head>
+<body><script>if(localStorage.getItem("pathpilot-theme")==="dark")document.body.classList.add("dark");</script>
+<div class="auth-page">
+  <section class="auth-hero">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div><strong>PathPilot</strong><small>Student Career OS</small></div>
+    </div>
+
+    <div class="hero-center">
+      <div class="pill"><span></span> STUDENT PRODUCTIVITY · CAREER PREP</div>
+      <h1>Your path to<br><b>your future.</b></h1>
+      <p>Build your study routine, solve DSA, track academic progress and keep everything organized in one place.</p>
+
+      <div class="hero-points">
+        <div>✓ Study planning</div>
+        <div>&lt;/&gt; DSA practice</div>
+        <div>▣ Academic tracking</div>
+        <div>✎ Revision notes</div>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <span>Built for students</span>
+      <span>One focused workspace</span>
+      <span>Study · DSA · Progress</span>
+    </div>
+  </section>
+
+  <section class="auth-form">
+    <div class="form-inner signup">
+      <div class="form-heading">
+        <div class="form-kicker">GET STARTED</div>
+        <h2>Create your account</h2>
+        <p>Set up your PathPilot workspace and start building your progress.</p>
+      </div>
+
+      <form id="signupForm">
+        <label for="name">Full name</label>
+        <input id="name" type="text" placeholder="Your full name" required>
+
+        <label for="signupEmail">Email</label>
+        <input id="signupEmail" type="email" placeholder="you@school.edu" required>
+
+        <label for="signupPassword">Password</label>
+        <div class="password">
+          <input id="signupPassword" type="password" placeholder="Create a password" minlength="6" required>
+          <button type="button" class="show-password" data-target="signupPassword">Show</button>
+        </div>
+
+        <label for="confirmPassword">Confirm password</label>
+        <div class="password">
+          <input id="confirmPassword" type="password" placeholder="Confirm your password" minlength="6" required>
+          <button type="button" class="show-password" data-target="confirmPassword">Show</button>
+        </div>
+
+        <label class="terms"><input id="terms" type="checkbox" required> <span>I agree to the terms and privacy policy.</span></label>
+
+        <button class="continue" type="submit">Create account</button>
+        <button class="guest-btn" id="guestLogin" type="button">Continue as guest</button>
+      </form>
+
+      <p class="message" id="formMessage"></p>
+      <p class="switch">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </section>
+</div>
+<script src="auth.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>
